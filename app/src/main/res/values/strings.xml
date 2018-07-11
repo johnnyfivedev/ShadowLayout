@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ShadowLayoutSample</string>
+    <string name="square_button_text">BUTTON</string>
+</resources>

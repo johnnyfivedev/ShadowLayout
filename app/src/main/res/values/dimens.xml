@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="round_button_width_height">80dp</dimen>
+    <dimen name="square_button_width">180dp</dimen>
+    <dimen name="square_button_height">60dp</dimen>
+
+</resources>

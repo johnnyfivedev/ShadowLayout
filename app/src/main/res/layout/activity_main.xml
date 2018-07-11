@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.johnnyfivedev.ShadowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_button_margin"
+        app:sl_cornerRadius="@dimen/round_button_width_height"
+        app:sl_shadowColor="@color/transparent_black">
+
+        <ImageButton
+            android:layout_width="@dimen/round_button_width_height"
+            android:layout_height="@dimen/round_button_width_height"
+            android:background="@drawable/blue_round_button_background"
+            android:src="@drawable/abc_ic_menu_share_mtrl_alpha" />
+    </com.johnnyfivedev.ShadowLayout>
+
+    <com.johnnyfivedev.ShadowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:sl_cornerRadius="@dimen/round_button_width_height"
+        app:sl_dx="@dimen/default_dx"
+        app:sl_dy="@dimen/default_dy"
+        app:sl_shadowColor="@color/transparent_black">
+
+        <ImageButton
+            android:layout_width="@dimen/round_button_width_height"
+            android:layout_height="@dimen/round_button_width_height"
+            android:background="@drawable/blue_round_button_background"
+            android:src="@drawable/abc_ic_menu_share_mtrl_alpha" />
+    </com.johnnyfivedev.ShadowLayout>
+
+    <com.johnnyfivedev.ShadowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:sl_dx="@dimen/default_dx"
+        app:sl_dy="@dimen/default_dy"
+        app:sl_shadowColor="@color/transparent_black">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/green_square_button_background"
+            android:text="@string/square_button_text"
+            android:textColor="@color/white" />
+    </com.johnnyfivedev.ShadowLayout>
+</LinearLayout>
