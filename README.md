@@ -1,2 +1,2 @@
 # ShadowLayout
-Layout for creating shadows around views in Android. Works акщь API 16 (Jelly Bean)
+Layout for creating shadows around views in Android. Works from API 16 (Jelly Bean)
