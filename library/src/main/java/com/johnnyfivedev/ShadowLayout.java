@@ -173,7 +173,6 @@ public class ShadowLayout extends FrameLayout {
         }
 
         canvas.drawRoundRect(shadowRect, cornerRadius, cornerRadius, shadowPaint);
-        //canvas.drawBitmap(bm2, 0, 0, paint);
 
         return output;
     }

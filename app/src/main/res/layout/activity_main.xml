@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/preview_item_margin">
+        android:paddingTop="@dimen/preview_item_margin">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,7 +21,6 @@
             <com.johnnyfivedev.ShadowLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/preview_item_margin"
                 app:sl_cornerRadius="@dimen/round_button_width_height"
                 app:sl_shadowColor="@color/transparent_black">
 
@@ -29,15 +28,15 @@
                     android:layout_width="@dimen/round_button_width_height"
                     android:layout_height="@dimen/round_button_width_height"
                     android:background="@drawable/blue_round_button_background"
-                    android:src="@drawable/ico_edit_light" />
+                    android:src="@drawable/abc_ic_menu_share_mtrl_alpha" />
             </com.johnnyfivedev.ShadowLayout>
 
             <com.johnnyfivedev.ShadowLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:sl_cornerRadius="@dimen/round_button_width_height"
-                app:sl_dx="@dimen/default_dx"
-                app:sl_dy="@dimen/default_dy"
+                app:sl_dx="2dp"
+                app:sl_dy="2dp"
                 app:sl_shadowColor="@color/transparent_black">
 
                 <ImageButton
@@ -53,7 +52,23 @@
                 app:sl_cornerRadius="@dimen/round_button_width_height"
                 app:sl_dx="4dp"
                 app:sl_dy="4dp"
-                app:sl_shadowColor="@color/transparent_green">
+                app:sl_shadowColor="@color/transparent_black">
+
+                <ImageButton
+                    android:layout_width="@dimen/round_button_width_height"
+                    android:layout_height="@dimen/round_button_width_height"
+                    android:background="@drawable/blue_round_button_background"
+                    android:src="@drawable/abc_ic_menu_share_mtrl_alpha" />
+            </com.johnnyfivedev.ShadowLayout>
+
+            <com.johnnyfivedev.ShadowLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sl_cornerRadius="@dimen/round_button_width_height"
+                app:sl_dx="4dp"
+                app:sl_dy="4dp"
+                app:sl_shadowColor="@color/transparent_black"
+                app:sl_shadowRadius="10dp">
 
                 <ImageButton
                     android:layout_width="@dimen/round_button_width_height"
@@ -63,6 +78,75 @@
             </com.johnnyfivedev.ShadowLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.johnnyfivedev.ShadowLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sl_cornerRadius="@dimen/round_button_width_height"
+                app:sl_shadowColor="@color/transparent_blue">
+
+                <ImageButton
+                    android:layout_width="@dimen/round_button_width_height"
+                    android:layout_height="@dimen/round_button_width_height"
+                    android:background="@drawable/blue_round_button_background"
+                    android:src="@drawable/abc_ic_menu_share_mtrl_alpha" />
+            </com.johnnyfivedev.ShadowLayout>
+
+            <com.johnnyfivedev.ShadowLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sl_cornerRadius="@dimen/round_button_width_height"
+                app:sl_dx="2dp"
+                app:sl_dy="2dp"
+                app:sl_shadowColor="@color/transparent_blue">
+
+                <ImageButton
+                    android:layout_width="@dimen/round_button_width_height"
+                    android:layout_height="@dimen/round_button_width_height"
+                    android:background="@drawable/blue_round_button_background"
+                    android:src="@drawable/abc_ic_menu_share_mtrl_alpha" />
+            </com.johnnyfivedev.ShadowLayout>
+
+            <com.johnnyfivedev.ShadowLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sl_cornerRadius="@dimen/round_button_width_height"
+                app:sl_dx="4dp"
+                app:sl_dy="4dp"
+                app:sl_shadowColor="@color/transparent_blue">
+
+                <ImageButton
+                    android:layout_width="@dimen/round_button_width_height"
+                    android:layout_height="@dimen/round_button_width_height"
+                    android:background="@drawable/blue_round_button_background"
+                    android:src="@drawable/abc_ic_menu_share_mtrl_alpha" />
+            </com.johnnyfivedev.ShadowLayout>
+
+            <com.johnnyfivedev.ShadowLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sl_cornerRadius="@dimen/round_button_width_height"
+                app:sl_dx="4dp"
+                app:sl_dy="4dp"
+                app:sl_shadowColor="@color/transparent_blue"
+                app:sl_shadowRadius="10dp">
+
+                <ImageButton
+                    android:layout_width="@dimen/round_button_width_height"
+                    android:layout_height="@dimen/round_button_width_height"
+                    android:background="@drawable/blue_round_button_background"
+                    android:src="@drawable/abc_ic_menu_share_mtrl_alpha" />
+            </com.johnnyfivedev.ShadowLayout>
+        </LinearLayout>
+
+        <!--todo the same with squared buttons-->
+        <!--todo the same with rounded buttons-->
+        <!--todo the same with layouts-->
         <!--   <com.johnnyfivedev.ShadowLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"

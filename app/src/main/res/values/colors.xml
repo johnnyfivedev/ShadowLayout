@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="white">#fff</color>
     <color name="blue_dark">#ff1976d1</color>
     <color name="blue">#29B6F6</color>
     <color name="green">#8BC34A</color>
     <color name="background">#f0f0f0</color>
-    <color name="transparent_black">#ac000000</color>
-    <color name="transparent_green">#ac009900</color>
-    <color name="grey">#222222</color>
-    <color name="white">#fff</color>
+
+    <color name="transparent_black">#66000000</color>
+    <color name="transparent_blue">#6629B6F6</color>
+    <color name="transparent_green">#668BC34A</color>
 </resources>
