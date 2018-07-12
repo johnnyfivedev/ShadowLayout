@@ -2,4 +2,8 @@
 <resources>
     <color name="default_shadow_color">#88757575</color>
     <color name="default_fill_color">#ffffff</color>
+    <color name="transparent_black">#ac000000</color>
+    <color name="transparent_green">#ac009900</color>
+    <color name="transparent_red">#ac995500</color>
+
 </resources>

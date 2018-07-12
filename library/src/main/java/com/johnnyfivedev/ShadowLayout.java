@@ -9,12 +9,15 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
 import com.johnnyfivedev.library.R;
 
 public class ShadowLayout extends FrameLayout {
+
+    private Context context;
 
     private int shadowColor;
     private float shadowRadius;
@@ -47,20 +50,20 @@ public class ShadowLayout extends FrameLayout {
 
     //region ===================== Public ======================
 
-    public void setInvalidateShadowOnSizeChanged(boolean invalidateShadowOnSizeChanged) {
+   /* public void setInvalidateShadowOnSizeChanged(boolean invalidateShadowOnSizeChanged) {
         this.invalidateShadowOnSizeChanged = invalidateShadowOnSizeChanged;
-    }
+    }*/
 
-    public void invalidateShadow() {
+    /*public void invalidateShadow() {
         forceInvalidateShadow = true;
         requestLayout();
         invalidate();
-    }
+    }*/
 
-    public void applyShadowColor(int shadowColorId) {
-        shadowColor = getResources().getColor(shadowColorId);
+    /*public void applyShadowColor(int shadowColorId) {
+        shadowColor = ContextCompat.getColor(context, shadowColorId);
         invalidateShadow();
-    }
+    }*/
 
     //endregion
 
@@ -95,35 +98,35 @@ public class ShadowLayout extends FrameLayout {
     //region ===================== Internal ======================
 
     private void initView(Context context, AttributeSet attrs) {
-        initAttributes(context, attrs);
+        this.context = context;
+        initAttributes(attrs);
 
         int xPadding = (int) (shadowRadius + Math.abs(dx));
         int yPadding = (int) (shadowRadius + Math.abs(dy));
         setPadding(xPadding, yPadding, xPadding, yPadding);
     }
 
-    @SuppressWarnings("deprecation")
     private void setBackgroundCompat(int w, int h) {
         Bitmap bitmap = createShadowBitmap(w, h, cornerRadius, shadowRadius, dx, dy, shadowColor, Color.TRANSPARENT);
         BitmapDrawable drawable = new BitmapDrawable(getResources(), bitmap);
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
+       /* if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
             setBackgroundDrawable(drawable);
-        } else {
-            setBackground(drawable);
-        }
+        } else {*/
+        setBackground(drawable);
+        //}
     }
 
-    private void initAttributes(Context context, AttributeSet attrs) {
-        TypedArray attr = getTypedArray(context, attrs, R.styleable.ShadowLayout);
-        if (attr != null) {
+    private void initAttributes(AttributeSet attrs) {
+        TypedArray typedArray = getTypedArray(context, attrs, R.styleable.ShadowLayout);
+        if (typedArray != null) {
             try {
-                cornerRadius = attr.getDimension(R.styleable.ShadowLayout_sl_cornerRadius, getResources().getDimension(R.dimen.default_corner_radius));
-                shadowRadius = attr.getDimension(R.styleable.ShadowLayout_sl_shadowRadius, getResources().getDimension(R.dimen.default_shadow_radius));
-                dx = attr.getDimension(R.styleable.ShadowLayout_sl_dx, 0);
-                dy = attr.getDimension(R.styleable.ShadowLayout_sl_dy, 0);
-                shadowColor = attr.getColor(R.styleable.ShadowLayout_sl_shadowColor, getResources().getColor(R.color.default_shadow_color));
+                cornerRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_cornerRadius, getResources().getDimension(R.dimen.default_corner_radius));
+                shadowRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowRadius, getResources().getDimension(R.dimen.default_shadow_radius));
+                dx = typedArray.getDimension(R.styleable.ShadowLayout_sl_dx, 0);
+                dy = typedArray.getDimension(R.styleable.ShadowLayout_sl_dy, 0);
+                shadowColor = typedArray.getColor(R.styleable.ShadowLayout_sl_shadowColor, ContextCompat.getColor(context, R.color.default_shadow_color));
             } finally {
-                attr.recycle();
+                typedArray.recycle();
             }
         }
     }
@@ -134,7 +137,8 @@ public class ShadowLayout extends FrameLayout {
 
     private Bitmap createShadowBitmap(int shadowWidth, int shadowHeight, float cornerRadius, float shadowRadius,
                                       float dx, float dy, int shadowColor, int fillColor) {
-        Bitmap output = Bitmap.createBitmap(shadowWidth, shadowHeight, Bitmap.Config.ALPHA_8);
+        // Be careful with Bitmap.Config enum. It might mess with a shadow color
+        Bitmap output = Bitmap.createBitmap(shadowWidth, shadowHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
 
         RectF shadowRect = new RectF(
@@ -169,6 +173,8 @@ public class ShadowLayout extends FrameLayout {
         }
 
         canvas.drawRoundRect(shadowRect, cornerRadius, cornerRadius, shadowPaint);
+        //canvas.drawBitmap(bm2, 0, 0, paint);
+
         return output;
     }
 

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="guideline_margin">16dp</dimen>
+    <dimen name="preview_item_margin">20dp</dimen>
     <dimen name="default_button_margin">16dp</dimen>
 
 </resources>
