@@ -12,7 +12,8 @@
 
         <include layout="@layout/round_button_samples" />
 
-        <!--todo the same with squared buttons-->
+        <include layout="@layout/button_samples" />
+
         <!--todo the same with rounded buttons-->
         <!--todo the same with layouts-->
         <!--   <com.johnnyfivedev.ShadowLayout

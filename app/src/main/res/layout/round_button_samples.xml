@@ -7,7 +7,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/preview_item_margin"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -38,6 +37,13 @@
                 android:background="@drawable/blue_round_button_background"
                 android:src="@drawable/abc_ic_menu_share_mtrl_alpha" />
         </com.johnnyfivedev.ShadowLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
@@ -104,6 +110,13 @@
                 android:background="@drawable/blue_round_button_background"
                 android:src="@drawable/abc_ic_menu_share_mtrl_alpha" />
         </com.johnnyfivedev.ShadowLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
@@ -136,5 +149,4 @@
                 android:src="@drawable/abc_ic_menu_share_mtrl_alpha" />
         </com.johnnyfivedev.ShadowLayout>
     </LinearLayout>
-
 </merge>
