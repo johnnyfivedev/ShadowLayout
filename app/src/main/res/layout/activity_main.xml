@@ -16,6 +16,7 @@
 
         <include layout="@layout/samples_rounded_button" />
 
-        <!--todo the same with layouts-->
+        <!--todo the same with ViewGroup-->
+        <!--todo the same with animations-->
     </LinearLayout>
 </ScrollView>

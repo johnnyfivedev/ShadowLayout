@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
+import android.support.annotation.ColorInt;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
@@ -17,8 +18,7 @@ import com.johnnyfivedev.library.R;
 
 public class ShadowLayout extends FrameLayout {
 
-    private Context context;
-
+    @ColorInt
     private int shadowColor;
     private float shadowRadius;
     private float cornerRadius;
@@ -27,6 +27,8 @@ public class ShadowLayout extends FrameLayout {
 
     private boolean invalidateShadowOnSizeChanged = true;
     private boolean forceInvalidateShadow = false;
+
+    private Context context;
 
 
     //region ===================== Constructors ======================
@@ -106,18 +108,8 @@ public class ShadowLayout extends FrameLayout {
         setPadding(xPadding, yPadding, xPadding, yPadding);
     }
 
-    private void setBackgroundCompat(int w, int h) {
-        Bitmap bitmap = createShadowBitmap(w, h, cornerRadius, shadowRadius, dx, dy, shadowColor, Color.TRANSPARENT);
-        BitmapDrawable drawable = new BitmapDrawable(getResources(), bitmap);
-       /* if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
-            setBackgroundDrawable(drawable);
-        } else {*/
-        setBackground(drawable);
-        //}
-    }
-
     private void initAttributes(AttributeSet attrs) {
-        TypedArray typedArray = getTypedArray(context, attrs, R.styleable.ShadowLayout);
+        TypedArray typedArray = getTypedArray(attrs, R.styleable.ShadowLayout);
         if (typedArray != null) {
             try {
                 cornerRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_cornerRadius, getResources().getDimension(R.dimen.default_corner_radius));
@@ -131,51 +123,71 @@ public class ShadowLayout extends FrameLayout {
         }
     }
 
-    private TypedArray getTypedArray(Context context, AttributeSet attributeSet, int[] attr) {
+    private TypedArray getTypedArray(AttributeSet attributeSet, int[] attr) {
         return context.obtainStyledAttributes(attributeSet, attr, 0, 0);
     }
 
-    private Bitmap createShadowBitmap(int shadowWidth, int shadowHeight, float cornerRadius, float shadowRadius,
-                                      float dx, float dy, int shadowColor, int fillColor) {
-        // Be careful with Bitmap.Config enum. It might mess with a shadow color
-        Bitmap output = Bitmap.createBitmap(shadowWidth, shadowHeight, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(output);
+    private void setBackgroundCompat(int w, int h) {
+        Bitmap bitmap = createShadowBitmap(w, h, cornerRadius, shadowRadius, dx, dy, shadowColor, Color.TRANSPARENT);
+        BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
+        setBackground(bitmapDrawable);
+    }
 
-        RectF shadowRect = new RectF(
+    private Bitmap createShadowBitmap(int shadowWidth,
+                                      int shadowHeight,
+                                      float cornerRadius,
+                                      float shadowRadius,
+                                      float dx,
+                                      float dy,
+                                      int shadowColor,
+                                      int fillColor) {
+        // Be careful with Bitmap.Config enum. It might mess with a shadow color
+        Bitmap bitmap = Bitmap.createBitmap(shadowWidth, shadowHeight, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+
+        RectF rectF = new RectF(
                 shadowRadius,
                 shadowRadius,
                 shadowWidth - shadowRadius,
                 shadowHeight - shadowRadius);
 
         if (dy > 0) {
-            shadowRect.top += dy;
-            shadowRect.bottom -= dy;
+            rectF.top += dy;
+            rectF.bottom -= dy;
         } else if (dy < 0) {
-            shadowRect.top += Math.abs(dy);
-            shadowRect.bottom -= Math.abs(dy);
+            rectF.top += Math.abs(dy);
+            rectF.bottom -= Math.abs(dy);
         }
 
         if (dx > 0) {
-            shadowRect.left += dx;
-            shadowRect.right -= dx;
+            rectF.left += dx;
+            rectF.right -= dx;
         } else if (dx < 0) {
-            shadowRect.left += Math.abs(dx);
-            shadowRect.right -= Math.abs(dx);
+            rectF.left += Math.abs(dx);
+            rectF.right -= Math.abs(dx);
         }
 
-        Paint shadowPaint = new Paint();
-        shadowPaint.setAntiAlias(true);
-        shadowPaint.setColor(fillColor);
-        shadowPaint.setStyle(Paint.Style.FILL);
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        //paint.setDither(true);
+        paint.setColor(fillColor);
+        paint.setStyle(Paint.Style.FILL);
 
         if (!isInEditMode()) {
-            shadowPaint.setShadowLayer(shadowRadius, dx, dy, shadowColor);
+            paint.setShadowLayer(shadowRadius, dx, dy, shadowColor);
         }
 
-        canvas.drawRoundRect(shadowRect, cornerRadius, cornerRadius, shadowPaint);
+        canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, paint);
 
-        return output;
+        return bitmap;
     }
 
     //endregion
 }
+
+/*
+ *  Buttons has an elevation on API > 21 and with ShadowLayout it looks ugly.
+ *  Solution is to disable elevation on api > 21
+ *  see
+ *  https://stackoverflow.com/questions/31003506/how-to-remove-border-shadow-from-lollipop-buttons
+ * */
