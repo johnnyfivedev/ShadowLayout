@@ -2,7 +2,12 @@
 <resources>
 
     <dimen name="round_button_width_height">80dp</dimen>
+
     <dimen name="square_button_width">160dp</dimen>
     <dimen name="square_button_height">60dp</dimen>
+
+    <dimen name="rounded_button_width">160dp</dimen>
+    <dimen name="rounded_button_height">60dp</dimen>
+    <dimen name="rounded_button_corner_radius">30dp</dimen>
 
 </resources>
