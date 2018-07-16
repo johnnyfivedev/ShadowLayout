@@ -1,5 +1,6 @@
 package com.johnnyfivedev;
 
+import android.animation.StateListAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -10,11 +11,17 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.johnnyfivedev.library.R;
+
+/**
+ * Note: ShadowLayout should have only one child
+ */
 
 public class ShadowLayout extends FrameLayout {
 
@@ -25,10 +32,17 @@ public class ShadowLayout extends FrameLayout {
     private float dx;
     private float dy;
 
+    private Context context;
+
     private boolean invalidateShadowOnSizeChanged = true;
+
     private boolean forceInvalidateShadow = false;
 
-    private Context context;
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    private StateListAnimator childStateListAnimator;
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    private float childElevation;
 
 
     //region ===================== Constructors ======================
@@ -67,6 +81,27 @@ public class ShadowLayout extends FrameLayout {
         invalidateShadow();
     }*/
 
+    /**
+     * Disables child elevation.
+     * If elevation and ShadowLayout are used at the same time actual shadow looks ugly
+     * so the solution is to disable elevation
+     * This is relevant only for API > 21
+     *
+     * Note: it work to disable first time and then enable first time by again doesn't work
+     * Is there a meaning to this feature?
+     */
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    public void setElevationEnabled(boolean enabled) {
+        if (enabled) {
+            getChild().setStateListAnimator(childStateListAnimator);
+            getChild().setElevation(childElevation);
+        } else {
+            // todo doesn't fork after onFinishInflate()
+            getChild().setStateListAnimator(null);
+            invalidate();
+        }
+    }
+
     //endregion
 
     @Override
@@ -77,6 +112,12 @@ public class ShadowLayout extends FrameLayout {
     @Override
     protected int getSuggestedMinimumHeight() {
         return 0;
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        disableElevationIfNeeded();
     }
 
     @Override
@@ -125,6 +166,24 @@ public class ShadowLayout extends FrameLayout {
 
     private TypedArray getTypedArray(AttributeSet attributeSet, int[] attr) {
         return context.obtainStyledAttributes(attributeSet, attr, 0, 0);
+    }
+
+    private void disableElevationIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            childStateListAnimator = getChildStateListAnimator();
+            childElevation = getChildElevation();
+            setElevationEnabled(false);
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    private StateListAnimator getChildStateListAnimator() {
+        return getChild().getStateListAnimator();
+    }
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    private float getChildElevation() {
+        return getChild().getElevation();
     }
 
     private void setBackgroundCompat(int w, int h) {
@@ -182,12 +241,15 @@ public class ShadowLayout extends FrameLayout {
         return bitmap;
     }
 
+    private View getChild() {
+        if (getChildCount() == 0) {
+            throw new RuntimeException("ShadowLayout should have one child. Did you forget to specify it?");
+        } else if (getChildCount() > 1) {
+            throw new RuntimeException("ShadowLayout should have only one child. Did you place several views in ShadowLayout?");
+        } else {
+            return getChildAt(0);
+        }
+    }
+
     //endregion
 }
-
-/*
- *  Buttons has an elevation on API > 21 and with ShadowLayout it looks ugly.
- *  Solution is to disable elevation on api > 21
- *  see
- *  https://stackoverflow.com/questions/31003506/how-to-remove-border-shadow-from-lollipop-buttons
- * */

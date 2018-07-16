@@ -1,0 +1,18 @@
+Plan:
+
+//* Create preview layout with all kinds of Views and ViewGroups (rounds, squares, rounded buttons)
+
+* Create method for hiding shadow
+
+* Create method for changing shadow color
+
+* Create default shadow which equals view color + alfa (pick default alpha by eye)
+
+/* Create logic for elevation handling and public API for users to switch this logic
+
+* Make more small methods if possible
+
+* Throw RuntimeException if layout has more than one child
+
+* Handle several views in layout
+

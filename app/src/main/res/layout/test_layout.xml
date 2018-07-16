@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <com.johnnyfivedev.ShadowLayout
+        android:id="@+id/shadow_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:sl_cornerRadius="@dimen/rounded_button_corner_radius"
@@ -15,19 +16,11 @@
         app:sl_shadowColor="@color/transparent_red">
 
         <Button
+            android:id="@+id/button"
             android:layout_width="340dp"
             android:layout_height="160dp"
             android:background="@drawable/rounded_button_background"
             android:text="@string/square_button_text"
             android:textColor="@color/white" />
     </com.johnnyfivedev.ShadowLayout>
-
-    <Button
-        android:layout_width="340dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/rounded_button_background"
-        android:text="@string/square_button_text"
-        android:textColor="@color/white" />
-
 </LinearLayout>
