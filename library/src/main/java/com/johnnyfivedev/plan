@@ -8,7 +8,9 @@ Plan:
 
 * Create default shadow which equals view color + alfa (pick default alpha by eye)
 
-/* Create logic for elevation handling and public API for users to switch this logic
+//* Create logic for elevation disabling
+
+* Create public API for users to switch between  elevation and shadow
 
 * Make more small methods if possible
 

@@ -86,7 +86,7 @@ public class ShadowLayout extends FrameLayout {
      * If elevation and ShadowLayout are used at the same time actual shadow looks ugly
      * so the solution is to disable elevation
      * This is relevant only for API > 21
-     *
+     * <p>
      * Note: it work to disable first time and then enable first time by again doesn't work
      * Is there a meaning to this feature?
      */
@@ -98,7 +98,7 @@ public class ShadowLayout extends FrameLayout {
         } else {
             // todo doesn't fork after onFinishInflate()
             getChild().setStateListAnimator(null);
-            invalidate();
+            //invalidate();
         }
     }
 
