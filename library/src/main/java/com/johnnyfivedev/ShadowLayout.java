@@ -67,11 +67,6 @@ public class ShadowLayout extends FrameLayout {
     /**
      * Sets shadow visibility.
      * Works the same way as {@link View} visibility.
-     * <p>
-     * Parameters which involved in visibility:
-     * <p>
-     * Shadow color
-     * Paddings
      */
     public void setShadowVisibility(int visibility) {
         if (currentVisibility != visibility) {
