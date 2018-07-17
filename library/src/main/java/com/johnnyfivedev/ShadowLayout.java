@@ -12,9 +12,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
+import android.support.annotation.DimenRes;
+import android.support.annotation.Px;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -63,6 +66,39 @@ public class ShadowLayout extends FrameLayout {
     //endregion
 
     //region ===================== Public ======================
+
+    /**
+     * Sets shadow radius.
+     *
+     * @param shadowRadius - radius of shadow in px
+     */
+    public void setShadowRadius(float shadowRadius) {
+        this.shadowRadius = shadowRadius;
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * Sets shadow radius.
+     *
+     * @param shadowRadius - radius of shadow in px
+     */
+    public void setShadowRadiusDp(float shadowRadius) {
+        this.shadowRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, shadowRadius, getResources().getDisplayMetrics());
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * Sets shadow radius.
+     *
+     * @param shadowRadiusResId - id of radius resource for shadow
+     */
+    public void setShadowRadiusResource(@DimenRes int shadowRadiusResId) {
+        this.shadowRadius = getResources().getDimensionPixelSize(shadowRadiusResId);
+        invalidate();
+        requestLayout();
+    }
 
     /**
      * Sets shadow visibility.

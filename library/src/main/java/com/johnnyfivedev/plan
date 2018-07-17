@@ -17,7 +17,7 @@ Plan:
 
 * Test button with shadow with transition animation and resize animation
 
-* Add public method for shadowRadius changing
+//* Add public method for shadowRadius changing
 
 * Add public method for cornerRadius changing
 

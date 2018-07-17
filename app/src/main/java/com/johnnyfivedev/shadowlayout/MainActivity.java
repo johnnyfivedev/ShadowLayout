@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 
@@ -31,22 +32,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private View.OnClickListener buttonOnClickListener = v -> {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             shadowLayout.setElevationEnabled(true);
-        }
+        }*/
+
+        //shadowLayout.setShadowRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 20, getResources().getDisplayMetrics()));
+
+        shadowLayout.setShadowRadiusResource(R.dimen.shadow_radius_big);
     };
 
     private View.OnLongClickListener buttonLongClickListener = v -> {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             shadowLayout.setElevationEnabled(false);
-        }
+        }*/
+        shadowLayout.setShadowRadiusDp(3);
+
         return true;
     };
-
-    @Override
-    public void onBackPressed() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ((ShadowLayout) findViewById(R.id.shadow_layout)).setElevationEnabled(false);
-        }
-    }
 }
