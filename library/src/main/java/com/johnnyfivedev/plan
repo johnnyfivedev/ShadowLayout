@@ -6,7 +6,7 @@ Plan:
 
 //* Create logic for elevation disabling
 
-* Create method for hiding shadow
+* Create method for shadow visibility
 
 * Create method for changing shadow color
 

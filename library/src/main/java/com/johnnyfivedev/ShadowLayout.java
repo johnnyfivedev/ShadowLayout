@@ -11,6 +11,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -33,6 +34,7 @@ public class ShadowLayout extends FrameLayout {
     private float dy;
 
     private Context context;
+    private int currentVisibility = View.VISIBLE;
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private StateListAnimator childStateListAnimator;
@@ -62,16 +64,48 @@ public class ShadowLayout extends FrameLayout {
 
     //region ===================== Public ======================
 
-    /*public void invalidateShadow() {
-        forceInvalidateShadow = true;
-        requestLayout();
-        invalidate();
-    }*/
+    /**
+     * Sets shadow visibility.
+     * Works the same way as {@link View} visibility.
+     * <p>
+     * Parameters which involved in visibility:
+     * <p>
+     * Shadow color
+     * Paddings
+     */
+    public void setShadowVisibility(int visibility) {
+        if (currentVisibility != visibility) {
+            switch (visibility) {
+                case VISIBLE:
+                    setPaddings();
+                    break;
+                case INVISIBLE:
+                    setBackground(null);
+                    if (currentVisibility == GONE) {
+                        setPaddings();
+                    }
+                    break;
+                case GONE:
+                    setPadding(0, 0, 0, 0);
+                    break;
+            }
+            currentVisibility = visibility;
+            invalidate();
+            requestLayout();
+        }
+    }
 
-    /*public void applyShadowColor(int shadowColorId) {
-        shadowColor = ContextCompat.getColor(context, shadowColorId);
-        invalidateShadow();
-    }*/
+    public void setShadowColorRes(@ColorRes int shadowColorId) {
+        this.shadowColor = ContextCompat.getColor(context, shadowColorId);
+        invalidate();
+        requestLayout();
+    }
+
+    public void setShadowColor(@ColorInt int shadowColor) {
+        this.shadowColor = shadowColor;
+        invalidate();
+        requestLayout();
+    }
 
     /**
      * Disables child elevation.
@@ -90,11 +124,40 @@ public class ShadowLayout extends FrameLayout {
         } else {
             // todo doesn't fork after onFinishInflate()
             getChild().setStateListAnimator(null);
-            //invalidate();
+            invalidate();
+            requestLayout();
         }
     }
 
     //endregion
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        disableElevationIfNeeded();
+    }
+
+    // todo is there a reason this logic should be also here? Try to animate width and transition in debug
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        /*if (w > 0 && h > 0) {
+            setBackgroundCompat(w, h);
+        }*/
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        if (currentVisibility != GONE) {
+            setBackgroundCompat(right - left, bottom - top);
+        }
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+    }
 
     @Override
     protected int getSuggestedMinimumWidth() {
@@ -106,33 +169,16 @@ public class ShadowLayout extends FrameLayout {
         return 0;
     }
 
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        disableElevationIfNeeded();
-    }
-
-    // todo is there a reason this logic should be also here? Try to animate width and transition in debug
-    /*@Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        if (w > 0 && h > 0) {
-            setBackgroundCompat(w, h);
-        }
-    }*/
-
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-        setBackgroundCompat(right - left, bottom - top);
-    }
-
     //region ===================== Internal ======================
 
     private void initView(Context context, AttributeSet attrs) {
         this.context = context;
         initAttributes(attrs);
 
+        setPaddings();
+    }
+
+    private void setPaddings() {
         int xPadding = (int) (shadowRadius + Math.abs(dx));
         int yPadding = (int) (shadowRadius + Math.abs(dy));
         setPadding(xPadding, yPadding, xPadding, yPadding);
@@ -222,7 +268,11 @@ public class ShadowLayout extends FrameLayout {
         paint.setStyle(Paint.Style.FILL);
 
         if (!isInEditMode()) {
-            paint.setShadowLayer(shadowRadius, dx, dy, shadowColor);
+            if (currentVisibility == INVISIBLE) {
+                paint.setShadowLayer(shadowRadius, dx, dy, Color.TRANSPARENT);
+            } else {
+                paint.setShadowLayer(shadowRadius, dx, dy, shadowColor);
+            }
         }
 
         canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, paint);
