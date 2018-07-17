@@ -112,11 +112,13 @@ public class ShadowLayout extends FrameLayout {
      * so the solution is to disable elevation
      * This is relevant only for API > 21
      * <p>
+     * Make public in future
+     * <p>
      * Note: it work to disable first time and then enable first time by again doesn't work
-     * Is there a meaning to this feature?
+     * Is there a meaning to this in feature?
      */
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    public void setElevationEnabled(boolean enabled) {
+    private void setElevationEnabled(boolean enabled) {
         if (enabled) {
             getChild().setStateListAnimator(childStateListAnimator);
             getChild().setElevation(childElevation);

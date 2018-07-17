@@ -31,17 +31,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private View.OnClickListener buttonOnClickListener = v -> {
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                shadowLayout.setElevationEnabled(true);
-            }*/
-
-        shadowLayout.setShadowColorRes(R.color.red);
-        //shadowLayout.setShadowVisibility(View.INVISIBLE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            shadowLayout.setElevationEnabled(true);
+        }
     };
 
     private View.OnLongClickListener buttonLongClickListener = v -> {
-        shadowLayout.setShadowColorRes(R.color.transparent_blue);
-        //shadowLayout.setShadowVisibility(View.GONE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            shadowLayout.setElevationEnabled(false);
+        }
         return true;
     };
 
