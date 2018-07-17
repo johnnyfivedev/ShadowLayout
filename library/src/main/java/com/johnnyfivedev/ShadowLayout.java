@@ -112,10 +112,11 @@ public class ShadowLayout extends FrameLayout {
         disableElevationIfNeeded();
     }
 
+    // todo is there a reason this logic should be also here? Try to animate width and transition in debug
     /*@Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if (w > 0 && h > 0 && (getBackground() == null || invalidateShadowOnSizeChanged)) {
+        if (w > 0 && h > 0) {
             setBackgroundCompat(w, h);
         }
     }*/
