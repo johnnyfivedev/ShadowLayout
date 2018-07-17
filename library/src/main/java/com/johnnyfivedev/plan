@@ -13,11 +13,15 @@ Plan:
 * Create default shadow which equals view color + alpha (pick default alpha by eye)
     - add minimum possible alpha?
 
-* Create public API for users to switch between elevation and shadow
+* Make more small methods if possible (refactoring)
 
-* Make more small methods if possible
+* Test button with shadow with transition animation and resize animation
 
+* Add public method for shadowRadius changing
 
+* Add public method for cornerRadius changing
+
+* Add public method for dx and dy changing
 
 
 
@@ -27,3 +31,14 @@ In future:
 
 * Handle several views in layout
 
+* Create public API for users to switch between elevation and shadow on API > 21
+
+
+
+
+
+
+Features added:
+
+* Visibility changing
+* Coloring
