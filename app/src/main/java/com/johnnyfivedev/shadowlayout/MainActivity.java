@@ -35,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
                 shadowLayout.setElevationEnabled(true);
             }*/
 
-        shadowLayout.setShadowVisibility(View.INVISIBLE);
+        shadowLayout.setShadowColorRes(R.color.red);
+        //shadowLayout.setShadowVisibility(View.INVISIBLE);
     };
 
     private View.OnLongClickListener buttonLongClickListener = v -> {
-        shadowLayout.setShadowVisibility(View.GONE);
-
-        //shadowLayout.setShadowColorRes(R.color.transparent_blue);
+        shadowLayout.setShadowColorRes(R.color.transparent_blue);
+        //shadowLayout.setShadowVisibility(View.GONE);
         return true;
     };
 

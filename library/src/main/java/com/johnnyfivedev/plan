@@ -8,9 +8,10 @@ Plan:
 
 //* Create method for shadow visibility
 
-* Create method for changing shadow color
+//* Create method for changing shadow color
 
-* Create default shadow which equals view color + alfa (pick default alpha by eye)
+* Create default shadow which equals view color + alpha (pick default alpha by eye)
+    - add minimum possible alpha?
 
 * Create public API for users to switch between elevation and shadow
 

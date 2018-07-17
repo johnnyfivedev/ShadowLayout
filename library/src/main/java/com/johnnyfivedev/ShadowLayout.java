@@ -90,6 +90,10 @@ public class ShadowLayout extends FrameLayout {
         }
     }
 
+    /**
+     * Sets a shadow color.
+     * Color should always have an alpha channel, otherwise shadow will be transparent
+     */
     public void setShadowColorRes(@ColorRes int shadowColorId) {
         this.shadowColor = ContextCompat.getColor(context, shadowColorId);
         invalidate();
