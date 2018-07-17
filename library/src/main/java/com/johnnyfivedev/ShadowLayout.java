@@ -34,10 +34,6 @@ public class ShadowLayout extends FrameLayout {
 
     private Context context;
 
-    private boolean invalidateShadowOnSizeChanged = true;
-
-    private boolean forceInvalidateShadow = false;
-
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private StateListAnimator childStateListAnimator;
 
@@ -65,10 +61,6 @@ public class ShadowLayout extends FrameLayout {
     //endregion
 
     //region ===================== Public ======================
-
-   /* public void setInvalidateShadowOnSizeChanged(boolean invalidateShadowOnSizeChanged) {
-        this.invalidateShadowOnSizeChanged = invalidateShadowOnSizeChanged;
-    }*/
 
     /*public void invalidateShadow() {
         forceInvalidateShadow = true;
@@ -120,22 +112,18 @@ public class ShadowLayout extends FrameLayout {
         disableElevationIfNeeded();
     }
 
-    @Override
+    /*@Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if (w > 0 && h > 0 && (getBackground() == null || invalidateShadowOnSizeChanged || forceInvalidateShadow)) {
-            forceInvalidateShadow = false;
+        if (w > 0 && h > 0 && (getBackground() == null || invalidateShadowOnSizeChanged)) {
             setBackgroundCompat(w, h);
         }
-    }
+    }*/
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        if (forceInvalidateShadow) {
-            forceInvalidateShadow = false;
-            setBackgroundCompat(right - left, bottom - top);
-        }
+        setBackgroundCompat(right - left, bottom - top);
     }
 
     //region ===================== Internal ======================

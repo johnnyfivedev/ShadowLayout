@@ -2,19 +2,27 @@ Plan:
 
 //* Create preview layout with all kinds of Views and ViewGroups (rounds, squares, rounded buttons)
 
+//* Throw RuntimeException if layout has more than one child
+
+//* Create logic for elevation disabling
+
 * Create method for hiding shadow
 
 * Create method for changing shadow color
 
 * Create default shadow which equals view color + alfa (pick default alpha by eye)
 
-//* Create logic for elevation disabling
-
-* Create public API for users to switch between  elevation and shadow
+* Create public API for users to switch between elevation and shadow
 
 * Make more small methods if possible
 
-* Throw RuntimeException if layout has more than one child
+
+
+
+
+
+
+In future:
 
 * Handle several views in layout
 
