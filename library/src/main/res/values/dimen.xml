@@ -2,4 +2,6 @@
 <resources>
     <dimen name="default_corner_radius">4dp</dimen>
     <dimen name="default_shadow_radius">4dp</dimen>
+    <dimen name="default_shadow_offset_x">4dp</dimen>
+    <dimen name="default_shadow_offset_y">4dp</dimen>
 </resources>

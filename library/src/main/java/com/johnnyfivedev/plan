@@ -20,15 +20,15 @@ Plan:
 
 //* Add updateUI method (invalidate + request layout)
 
+//* Make more small methods if possible (refactoring)
+
 
 * Create default shadow which equals view color + alpha (pick default alpha by eye)
     - add minimum possible alpha?
 
-* Make more small methods if possible (refactoring)
-
 * Test button with shadow with transition animation and resize animation
 
-* Add default shadow attrs (and mb default style)
+/* Add default shadow attrs (and mb default style)
 
 * Rename cornerRadius to shadowCornerRadius
 

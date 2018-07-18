@@ -11,20 +11,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <com.johnnyfivedev.ShadowLayout
+        <!--<com.johnnyfivedev.ShadowLayout
             android:id="@+id/shadow_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:sl_cornerRadius="@dimen/rounded_button_corner_radius"
             app:sl_shadowOffsetX="4dp"
             app:sl_shadowOffsetY="4dp"
-            app:sl_shadowColor="@color/transparent_red">
+            app:sl_shadowColor="@color/transparent_red">-->
+        <com.johnnyfivedev.ShadowLayout
+            android:id="@+id/shadow_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="300dp"
                 android:layout_height="100dp"
-                android:background="@drawable/rounded_button_background"
+                android:background="@drawable/green_square_button_background"
                 android:text="@string/square_button_text"
                 android:textColor="@color/white" />
         </com.johnnyfivedev.ShadowLayout>

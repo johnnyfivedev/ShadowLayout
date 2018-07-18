@@ -323,10 +323,10 @@ public class ShadowLayout extends FrameLayout {
         TypedArray typedArray = getTypedArray(attrs, R.styleable.ShadowLayout);
         if (typedArray != null) {
             try {
-                cornerRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_cornerRadius, getResources().getDimension(R.dimen.default_corner_radius));
-                shadowRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowRadius, getResources().getDimension(R.dimen.default_shadow_radius));
-                shadowOffsetX = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowOffsetX, 0);
-                shadowOffsetY = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowOffsetY, 0);
+                cornerRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_cornerRadius, getResources().getDimensionPixelSize(R.dimen.default_corner_radius));
+                shadowRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowRadius, getResources().getDimensionPixelSize(R.dimen.default_shadow_radius));
+                shadowOffsetX = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowOffsetX, getResources().getDimensionPixelSize(R.dimen.default_shadow_offset_x));
+                shadowOffsetY = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowOffsetY, getResources().getDimensionPixelSize(R.dimen.default_shadow_offset_y));
                 shadowColor = typedArray.getColor(R.styleable.ShadowLayout_sl_shadowColor, ContextCompat.getColor(context, R.color.default_shadow_color));
             } finally {
                 typedArray.recycle();
