@@ -2,7 +2,6 @@
 <resources>
 
     <dimen name="shadow_radius">6dp</dimen>
-    <dimen name="shadow_radius_big">3dp</dimen>
     <dimen name="default_dx">2dp</dimen>
     <!--TODO: Positive value moves shadow down. It's against classic coordinate system. To fix it.-->
     <dimen name="default_dy">2dp</dimen>

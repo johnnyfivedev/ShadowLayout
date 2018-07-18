@@ -22,8 +22,8 @@
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="340dp"
-                android:layout_height="160dp"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
                 android:background="@drawable/rounded_button_background"
                 android:text="@string/square_button_text"
                 android:textColor="@color/white" />

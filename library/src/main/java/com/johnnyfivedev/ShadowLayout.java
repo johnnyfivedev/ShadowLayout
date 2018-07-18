@@ -9,6 +9,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.Shape;
 import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
@@ -96,6 +99,39 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setShadowRadiusResource(@DimenRes int shadowRadiusResId) {
         this.shadowRadius = getResources().getDimensionPixelSize(shadowRadiusResId);
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * Sets shadow corner radius.
+     *
+     * @param cornerRadius - radius of shadow corners in px
+     */
+    public void setCornerRadius(float cornerRadius) {
+        this.cornerRadius = cornerRadius;
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * Sets shadow corner radius.
+     *
+     * @param cornerRadius - radius of shadow corners in dp
+     */
+    public void setCornerRadiusDp(float cornerRadius) {
+        this.cornerRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, cornerRadius, getResources().getDisplayMetrics());
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * Sets shadow corner radius.
+     *
+     * @param cornerRadiusResId - id of corner radius resource for shadow
+     */
+    public void setCornerRadiusResource(@DimenRes int cornerRadiusResId) {
+        this.cornerRadius = getResources().getDimensionPixelSize(cornerRadiusResId);
         invalidate();
         requestLayout();
     }

@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button;
     private View root;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,14 +39,17 @@ public class MainActivity extends AppCompatActivity {
 
         //shadowLayout.setShadowRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 20, getResources().getDisplayMetrics()));
 
-        shadowLayout.setShadowRadiusResource(R.dimen.shadow_radius_big);
+        //shadowLayout.setShadowRadiusResource(R.dimen.shadow_radius_big);
+        shadowLayout.setCornerRadiusDp(30);
     };
 
     private View.OnLongClickListener buttonLongClickListener = v -> {
        /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             shadowLayout.setElevationEnabled(false);
         }*/
-        shadowLayout.setShadowRadiusDp(3);
+        //shadowLayout.setShadowRadiusDp(3);
+
+        shadowLayout.setCornerRadius(30);
 
         return true;
     };

@@ -10,6 +10,11 @@ Plan:
 
 //* Create method for changing shadow color
 
+//* Add public method for shadowRadius changing
+
+//* Add public method for cornerRadius changing
+
+
 * Create default shadow which equals view color + alpha (pick default alpha by eye)
     - add minimum possible alpha?
 
@@ -17,14 +22,13 @@ Plan:
 
 * Test button with shadow with transition animation and resize animation
 
-//* Add public method for shadowRadius changing
 
-* Add public method for cornerRadius changing
 
 * Add public method for dx and dy changing
 
+* Add default shadow attrs (and mb default style)
 
-
+* Add updateUI method (invalidate + request layout)
 
 
 In future:
@@ -33,6 +37,7 @@ In future:
 
 * Create public API for users to switch between elevation and shadow on API > 21
 
+* Make parent knew its child corner radius (at least from background drawable)
 
 
 
