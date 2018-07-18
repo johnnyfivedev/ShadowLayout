@@ -26,8 +26,7 @@ Plan:
 
 //* Rename cornerRadius to shadowCornerRadius
 
-
-/* Test button with shadow with transition animation and resize animation
+//* Test button with shadow with transition animation and resize animation
 
 
 * Create default shadow which equals view color + alpha (pick default alpha by eye)
@@ -37,18 +36,13 @@ Plan:
 
 
 
+
 In future:
 
-* Handle several views in layout
+* Handle several views in layout (one shadow or multiple?)
 
 * Create public API for users to switch between elevation and shadow on API > 21
 
 * Make parent knew its child corner radius (at least from background drawable)
 
 * Handle shadow offset. Let it not make shadow smaller but move rectangle to dx and dy!?
-
-
-Features added:
-
-* Visibility changing
-* Coloring
