@@ -15,7 +15,7 @@
             android:id="@+id/shadow_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_cornerRadius="@dimen/rounded_button_corner_radius"
+            app:sl_shadowCornerRadius="@dimen/rounded_button_corner_radius"
             app:sl_shadowOffsetX="4dp"
             app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_red">-->

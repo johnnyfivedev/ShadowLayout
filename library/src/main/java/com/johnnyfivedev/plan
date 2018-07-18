@@ -12,7 +12,7 @@ Plan:
 
 //* Add public method for shadowRadius changing
 
-//* Add public method for cornerRadius changing
+//* Add public method for shadowCornerRadius changing
 
 //* Add public method for shadowOffsetX and shadowOffsetY changing
 
@@ -22,15 +22,18 @@ Plan:
 
 //* Make more small methods if possible (refactoring)
 
+//* Add default shadow attrs (and mb default style)
+
+//* Rename cornerRadius to shadowCornerRadius
+
+
+
 
 * Create default shadow which equals view color + alpha (pick default alpha by eye)
     - add minimum possible alpha?
 
 * Test button with shadow with transition animation and resize animation
 
-/* Add default shadow attrs (and mb default style)
-
-* Rename cornerRadius to shadowCornerRadius
 
 
 

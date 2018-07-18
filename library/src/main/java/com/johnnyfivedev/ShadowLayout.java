@@ -27,7 +27,7 @@ public class ShadowLayout extends FrameLayout {
     @ColorInt
     private int shadowColor;
     private float shadowRadius;
-    private float cornerRadius;
+    private float shadowCornerRadius;
     private float shadowOffsetX;
     private float shadowOffsetY;
 
@@ -101,10 +101,10 @@ public class ShadowLayout extends FrameLayout {
     /**
      * Sets shadow corner radius.
      *
-     * @param cornerRadius - radius of shadow corners in px
+     * @param shadowCornerRadius - radius of shadow corners in px
      */
-    public void setCornerRadius(float cornerRadius) {
-        this.cornerRadius = cornerRadius;
+    public void setShadowCornerRadius(float shadowCornerRadius) {
+        this.shadowCornerRadius = shadowCornerRadius;
         redrawUI();
     }
 
@@ -114,17 +114,17 @@ public class ShadowLayout extends FrameLayout {
      * @param cornerRadius - radius of shadow corners in dp
      */
     public void setCornerRadiusDp(float cornerRadius) {
-        this.cornerRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, cornerRadius, getResources().getDisplayMetrics());
+        this.shadowCornerRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, cornerRadius, getResources().getDisplayMetrics());
         redrawUI();
     }
 
     /**
      * Sets shadow corner radius.
      *
-     * @param cornerRadiusResId - id of corner radius resource for shadow
+     * @param shadowCornerRadiusResId - id of corner radius resource for shadow
      */
-    public void setCornerRadiusResource(@DimenRes int cornerRadiusResId) {
-        this.cornerRadius = getResources().getDimensionPixelSize(cornerRadiusResId);
+    public void setCornerRadiusResource(@DimenRes int shadowCornerRadiusResId) {
+        this.shadowCornerRadius = getResources().getDimensionPixelSize(shadowCornerRadiusResId);
         redrawUI();
     }
 
@@ -323,7 +323,7 @@ public class ShadowLayout extends FrameLayout {
         TypedArray typedArray = getTypedArray(attrs, R.styleable.ShadowLayout);
         if (typedArray != null) {
             try {
-                cornerRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_cornerRadius, getResources().getDimensionPixelSize(R.dimen.default_corner_radius));
+                shadowCornerRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowCornerRadius, getResources().getDimensionPixelSize(R.dimen.default_shadow_corner_radius));
                 shadowRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowRadius, getResources().getDimensionPixelSize(R.dimen.default_shadow_radius));
                 shadowOffsetX = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowOffsetX, getResources().getDimensionPixelSize(R.dimen.default_shadow_offset_x));
                 shadowOffsetY = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowOffsetY, getResources().getDimensionPixelSize(R.dimen.default_shadow_offset_y));
@@ -369,8 +369,8 @@ public class ShadowLayout extends FrameLayout {
 
         canvas.drawRoundRect(
                 createRectF(shadowWidth, shadowHeight),
-                cornerRadius,
-                cornerRadius,
+                shadowCornerRadius,
+                shadowCornerRadius,
                 createPaint());
 
         return bitmap;

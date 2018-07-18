@@ -13,7 +13,7 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_cornerRadius="@dimen/rounded_button_corner_radius"
+            app:sl_shadowCornerRadius="@dimen/rounded_button_corner_radius"
             app:sl_shadowColor="@color/transparent_black">
 
             <Button
@@ -27,7 +27,7 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_cornerRadius="@dimen/rounded_button_corner_radius"
+            app:sl_shadowCornerRadius="@dimen/rounded_button_corner_radius"
             app:sl_shadowOffsetX="2dp"
             app:sl_shadowOffsetY="2dp"
             app:sl_shadowColor="@color/transparent_black">
@@ -50,7 +50,7 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_cornerRadius="@dimen/rounded_button_corner_radius"
+            app:sl_shadowCornerRadius="@dimen/rounded_button_corner_radius"
             app:sl_shadowOffsetX="4dp"
             app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_black">
@@ -66,7 +66,7 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_cornerRadius="@dimen/rounded_button_corner_radius"
+            app:sl_shadowCornerRadius="@dimen/rounded_button_corner_radius"
             app:sl_shadowOffsetX="4dp"
             app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_black"
@@ -90,7 +90,7 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_cornerRadius="@dimen/rounded_button_corner_radius"
+            app:sl_shadowCornerRadius="@dimen/rounded_button_corner_radius"
             app:sl_shadowColor="@color/transparent_red">
 
             <Button
@@ -104,7 +104,7 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_cornerRadius="@dimen/rounded_button_corner_radius"
+            app:sl_shadowCornerRadius="@dimen/rounded_button_corner_radius"
             app:sl_shadowOffsetX="2dp"
             app:sl_shadowOffsetY="2dp"
             app:sl_shadowColor="@color/transparent_red">
@@ -127,7 +127,7 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_cornerRadius="@dimen/rounded_button_corner_radius"
+            app:sl_shadowCornerRadius="@dimen/rounded_button_corner_radius"
             app:sl_shadowOffsetX="4dp"
             app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_red">
@@ -143,7 +143,7 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_cornerRadius="@dimen/rounded_button_corner_radius"
+            app:sl_shadowCornerRadius="@dimen/rounded_button_corner_radius"
             app:sl_shadowOffsetX="4dp"
             app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_red"
