@@ -71,8 +71,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setShadowRadius(float shadowRadius) {
         this.shadowRadius = shadowRadius;
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     /**
@@ -82,8 +81,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setShadowRadiusDp(float shadowRadius) {
         this.shadowRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, shadowRadius, getResources().getDisplayMetrics());
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     /**
@@ -93,8 +91,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setShadowRadiusResource(@DimenRes int shadowRadiusResId) {
         this.shadowRadius = getResources().getDimensionPixelSize(shadowRadiusResId);
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     //endregion
@@ -108,8 +105,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setCornerRadius(float cornerRadius) {
         this.cornerRadius = cornerRadius;
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     /**
@@ -119,8 +115,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setCornerRadiusDp(float cornerRadius) {
         this.cornerRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, cornerRadius, getResources().getDisplayMetrics());
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     /**
@@ -130,8 +125,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setCornerRadiusResource(@DimenRes int cornerRadiusResId) {
         this.cornerRadius = getResources().getDimensionPixelSize(cornerRadiusResId);
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     //endregion
@@ -145,8 +139,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setShadowOffsetX(float shadowOffsetX) {
         this.shadowOffsetX = shadowOffsetX;
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     /**
@@ -156,8 +149,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setShadowOffsetXDp(float shadowOffsetX) {
         this.shadowOffsetX = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, shadowOffsetX, getResources().getDisplayMetrics());
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     /**
@@ -167,8 +159,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setShadowOffsetXResource(@DimenRes int shadowOffsetXResId) {
         this.shadowOffsetX = getResources().getDimensionPixelSize(shadowOffsetXResId);
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     /**
@@ -178,8 +169,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setShadowOffsetY(float shadowOffsetY) {
         this.shadowOffsetY = shadowOffsetY;
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     /**
@@ -189,8 +179,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setShadowOffsetYDp(float shadowOffsetY) {
         this.shadowOffsetY = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, shadowOffsetY, getResources().getDisplayMetrics());
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     /**
@@ -200,8 +189,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setShadowOffsetYResource(@DimenRes int shadowOffsetYResId) {
         this.shadowOffsetY = getResources().getDimensionPixelSize(shadowOffsetYResId);
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     //endregion
@@ -210,8 +198,7 @@ public class ShadowLayout extends FrameLayout {
 
     public void setShadowColor(@ColorInt int shadowColor) {
         this.shadowColor = shadowColor;
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     /**
@@ -220,8 +207,7 @@ public class ShadowLayout extends FrameLayout {
      */
     public void setShadowColorRes(@ColorRes int shadowColorId) {
         this.shadowColor = ContextCompat.getColor(context, shadowColorId);
-        invalidate();
-        requestLayout();
+        redrawUI();
     }
 
     //endregion
@@ -247,8 +233,7 @@ public class ShadowLayout extends FrameLayout {
                     break;
             }
             currentVisibility = visibility;
-            invalidate();
-            requestLayout();
+            redrawUI();
         }
     }
 
@@ -271,8 +256,7 @@ public class ShadowLayout extends FrameLayout {
         } else {
             // todo doesn't fork after onFinishInflate()
             getChild().setStateListAnimator(null);
-            invalidate();
-            requestLayout();
+            redrawUI();
         }
     }
 
@@ -438,6 +422,12 @@ public class ShadowLayout extends FrameLayout {
         } else {
             return getChildAt(0);
         }
+    }
+
+    // see https://stackoverflow.com/questions/13856180/usage-of-forcelayout-requestlayout-and-invalidate
+    private void redrawUI() {
+        invalidate();
+        requestLayout();
     }
 
     //endregion

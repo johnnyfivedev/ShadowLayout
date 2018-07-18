@@ -16,6 +16,8 @@ Plan:
 
 //* Add public method for shadowOffsetX and shadowOffsetY changing
 
+//* Rename dx and dy to shadowOffsetX and shadowOffsetY
+
 
 * Create default shadow which equals view color + alpha (pick default alpha by eye)
     - add minimum possible alpha?
@@ -28,7 +30,6 @@ Plan:
 
 * Add updateUI method (invalidate + request layout)
 
-* Rename dx and dy to shadowOffsetX and shadowOffsetY
 
 * Rename cornerRadius to shadowCornerRadius
 
