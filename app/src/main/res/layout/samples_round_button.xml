@@ -28,8 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:sl_cornerRadius="@dimen/round_button_width_height"
-            app:sl_dx="2dp"
-            app:sl_dy="2dp"
+            app:sl_shadowOffsetX="2dp"
+            app:sl_shadowOffsetY="2dp"
             app:sl_shadowColor="@color/transparent_black">
 
             <ImageButton
@@ -50,8 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:sl_cornerRadius="@dimen/round_button_width_height"
-            app:sl_dx="4dp"
-            app:sl_dy="4dp"
+            app:sl_shadowOffsetX="4dp"
+            app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_black">
 
             <ImageButton
@@ -65,8 +65,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:sl_cornerRadius="@dimen/round_button_width_height"
-            app:sl_dx="4dp"
-            app:sl_dy="4dp"
+            app:sl_shadowOffsetX="4dp"
+            app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_black"
             app:sl_shadowRadius="10dp">
 
@@ -101,8 +101,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:sl_cornerRadius="@dimen/round_button_width_height"
-            app:sl_dx="2dp"
-            app:sl_dy="2dp"
+            app:sl_shadowOffsetX="2dp"
+            app:sl_shadowOffsetY="2dp"
             app:sl_shadowColor="@color/transparent_blue">
 
             <ImageButton
@@ -123,8 +123,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:sl_cornerRadius="@dimen/round_button_width_height"
-            app:sl_dx="4dp"
-            app:sl_dy="4dp"
+            app:sl_shadowOffsetX="4dp"
+            app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_blue">
 
             <ImageButton
@@ -138,8 +138,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:sl_cornerRadius="@dimen/round_button_width_height"
-            app:sl_dx="4dp"
-            app:sl_dy="4dp"
+            app:sl_shadowOffsetX="4dp"
+            app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_blue"
             app:sl_shadowRadius="10dp">
 

@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         //shadowLayout.setShadowRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 20, getResources().getDisplayMetrics()));
 
         //shadowLayout.setShadowRadiusResource(R.dimen.shadow_radius_big);
-        shadowLayout.setCornerRadiusDp(30);
+        shadowLayout.setShadowOffsetYDp(-10);
+        shadowLayout.setShadowOffsetXDp(-10);
+        //shadowLayout.setShadowRadiusDp(3);
     };
 
     private View.OnLongClickListener buttonLongClickListener = v -> {
@@ -49,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
         }*/
         //shadowLayout.setShadowRadiusDp(3);
 
-        shadowLayout.setCornerRadius(30);
+        shadowLayout.setShadowOffsetYDp(0);
+        shadowLayout.setShadowOffsetXDp(0);
+        //shadowLayout.setShadowRadiusDp(2);
 
         return true;
     };

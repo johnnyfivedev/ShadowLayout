@@ -9,14 +9,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.Shape;
 import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
-import android.support.annotation.Px;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -26,18 +22,14 @@ import android.widget.FrameLayout;
 
 import com.johnnyfivedev.library.R;
 
-/**
- * Note: ShadowLayout should have only one child
- */
-
 public class ShadowLayout extends FrameLayout {
 
     @ColorInt
     private int shadowColor;
     private float shadowRadius;
     private float cornerRadius;
-    private float dx;
-    private float dy;
+    private float shadowOffsetX;
+    private float shadowOffsetY;
 
     private Context context;
     private int currentVisibility = View.VISIBLE;
@@ -69,6 +61,8 @@ public class ShadowLayout extends FrameLayout {
     //endregion
 
     //region ===================== Public ======================
+
+    //region ===================== Shadow radius ======================
 
     /**
      * Sets shadow radius.
@@ -103,6 +97,10 @@ public class ShadowLayout extends FrameLayout {
         requestLayout();
     }
 
+    //endregion
+
+    //region ===================== Shadow corner radius ======================
+
     /**
      * Sets shadow corner radius.
      *
@@ -136,6 +134,98 @@ public class ShadowLayout extends FrameLayout {
         requestLayout();
     }
 
+    //endregion
+
+    //region ===================== Shadow offset ======================
+
+    /**
+     * Sets shadow offset from view on X axis in px.
+     *
+     * @param shadowOffsetX -  offset X in px
+     */
+    public void setShadowOffsetX(float shadowOffsetX) {
+        this.shadowOffsetX = shadowOffsetX;
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * Sets shadow offset from view on X axis in dp.
+     *
+     * @param shadowOffsetX -  offset X in dp
+     */
+    public void setShadowOffsetXDp(float shadowOffsetX) {
+        this.shadowOffsetX = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, shadowOffsetX, getResources().getDisplayMetrics());
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * Sets shadow offset from view on X axis in px.
+     *
+     * @param shadowOffsetXResId - id of corner radius resource for shadow
+     */
+    public void setShadowOffsetXResource(@DimenRes int shadowOffsetXResId) {
+        this.shadowOffsetX = getResources().getDimensionPixelSize(shadowOffsetXResId);
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * Sets shadow offset from view on Y axis in px.
+     *
+     * @param shadowOffsetY -  offset Y in px
+     */
+    public void setShadowOffsetY(float shadowOffsetY) {
+        this.shadowOffsetY = shadowOffsetY;
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * Sets shadow offset from view on Y axis in dp.
+     *
+     * @param shadowOffsetY -  offset Y in dp
+     */
+    public void setShadowOffsetYDp(float shadowOffsetY) {
+        this.shadowOffsetY = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, shadowOffsetY, getResources().getDisplayMetrics());
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * Sets shadow offset from view on Y axis in px.
+     *
+     * @param shadowOffsetYResId - id of corner radius resource for shadow
+     */
+    public void setShadowOffsetYResource(@DimenRes int shadowOffsetYResId) {
+        this.shadowOffsetY = getResources().getDimensionPixelSize(shadowOffsetYResId);
+        invalidate();
+        requestLayout();
+    }
+
+    //endregion
+
+    //region ===================== Shadow color ======================
+
+    public void setShadowColor(@ColorInt int shadowColor) {
+        this.shadowColor = shadowColor;
+        invalidate();
+        requestLayout();
+    }
+
+    /**
+     * Sets a shadow color.
+     * Color should always have an alpha channel, otherwise shadow will be transparent
+     */
+    public void setShadowColorRes(@ColorRes int shadowColorId) {
+        this.shadowColor = ContextCompat.getColor(context, shadowColorId);
+        invalidate();
+        requestLayout();
+    }
+
+    //endregion
+
     /**
      * Sets shadow visibility.
      * Works the same way as {@link View} visibility.
@@ -163,22 +253,6 @@ public class ShadowLayout extends FrameLayout {
     }
 
     /**
-     * Sets a shadow color.
-     * Color should always have an alpha channel, otherwise shadow will be transparent
-     */
-    public void setShadowColorRes(@ColorRes int shadowColorId) {
-        this.shadowColor = ContextCompat.getColor(context, shadowColorId);
-        invalidate();
-        requestLayout();
-    }
-
-    public void setShadowColor(@ColorInt int shadowColor) {
-        this.shadowColor = shadowColor;
-        invalidate();
-        requestLayout();
-    }
-
-    /**
      * Disables child elevation.
      * If elevation and ShadowLayout are used at the same time actual shadow looks ugly
      * so the solution is to disable elevation
@@ -203,6 +277,8 @@ public class ShadowLayout extends FrameLayout {
     }
 
     //endregion
+
+    //region ===================== Callbacks ======================
 
     @Override
     protected void onFinishInflate() {
@@ -242,6 +318,8 @@ public class ShadowLayout extends FrameLayout {
         return 0;
     }
 
+    //endregion
+
     //region ===================== Internal ======================
 
     private void initView(Context context, AttributeSet attrs) {
@@ -252,8 +330,8 @@ public class ShadowLayout extends FrameLayout {
     }
 
     private void setPaddings() {
-        int xPadding = (int) (shadowRadius + Math.abs(dx));
-        int yPadding = (int) (shadowRadius + Math.abs(dy));
+        int xPadding = (int) (shadowRadius + Math.abs(shadowOffsetX));
+        int yPadding = (int) (shadowRadius + Math.abs(shadowOffsetY));
         setPadding(xPadding, yPadding, xPadding, yPadding);
     }
 
@@ -263,8 +341,8 @@ public class ShadowLayout extends FrameLayout {
             try {
                 cornerRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_cornerRadius, getResources().getDimension(R.dimen.default_corner_radius));
                 shadowRadius = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowRadius, getResources().getDimension(R.dimen.default_shadow_radius));
-                dx = typedArray.getDimension(R.styleable.ShadowLayout_sl_dx, 0);
-                dy = typedArray.getDimension(R.styleable.ShadowLayout_sl_dy, 0);
+                shadowOffsetX = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowOffsetX, 0);
+                shadowOffsetY = typedArray.getDimension(R.styleable.ShadowLayout_sl_shadowOffsetY, 0);
                 shadowColor = typedArray.getColor(R.styleable.ShadowLayout_sl_shadowColor, ContextCompat.getColor(context, R.color.default_shadow_color));
             } finally {
                 typedArray.recycle();
@@ -295,17 +373,16 @@ public class ShadowLayout extends FrameLayout {
     }
 
     private void setBackgroundCompat(int w, int h) {
-        Bitmap bitmap = createShadowBitmap(w, h, cornerRadius, shadowRadius, dx, dy, shadowColor, Color.TRANSPARENT);
-        BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
-        setBackground(bitmapDrawable);
+        Bitmap bitmap = createShadowBitmap(w, h, cornerRadius, shadowRadius, shadowOffsetX, shadowOffsetY, shadowColor, Color.TRANSPARENT);
+        setBackground(new BitmapDrawable(getResources(), bitmap));
     }
 
     private Bitmap createShadowBitmap(int shadowWidth,
                                       int shadowHeight,
                                       float cornerRadius,
                                       float shadowRadius,
-                                      float dx,
-                                      float dy,
+                                      float shadowOffsetX,
+                                      float shadowOffsetY,
                                       int shadowColor,
                                       int fillColor) {
         // Be careful with Bitmap.Config enum. It might mess with a shadow color
@@ -318,20 +395,20 @@ public class ShadowLayout extends FrameLayout {
                 shadowWidth - shadowRadius,
                 shadowHeight - shadowRadius);
 
-        if (dy > 0) {
-            rectF.top += dy;
-            rectF.bottom -= dy;
-        } else if (dy < 0) {
-            rectF.top += Math.abs(dy);
-            rectF.bottom -= Math.abs(dy);
+        if (shadowOffsetY > 0) {
+            rectF.top += shadowOffsetY;
+            rectF.bottom -= shadowOffsetY;
+        } else if (shadowOffsetY < 0) {
+            rectF.top += Math.abs(shadowOffsetY);
+            rectF.bottom -= Math.abs(shadowOffsetY);
         }
 
-        if (dx > 0) {
-            rectF.left += dx;
-            rectF.right -= dx;
-        } else if (dx < 0) {
-            rectF.left += Math.abs(dx);
-            rectF.right -= Math.abs(dx);
+        if (shadowOffsetX > 0) {
+            rectF.left += shadowOffsetX;
+            rectF.right -= shadowOffsetX;
+        } else if (shadowOffsetX < 0) {
+            rectF.left += Math.abs(shadowOffsetX);
+            rectF.right -= Math.abs(shadowOffsetX);
         }
 
         Paint paint = new Paint();
@@ -342,9 +419,9 @@ public class ShadowLayout extends FrameLayout {
 
         if (!isInEditMode()) {
             if (currentVisibility == INVISIBLE) {
-                paint.setShadowLayer(shadowRadius, dx, dy, Color.TRANSPARENT);
+                paint.setShadowLayer(shadowRadius, shadowOffsetX, shadowOffsetY, Color.TRANSPARENT);
             } else {
-                paint.setShadowLayer(shadowRadius, dx, dy, shadowColor);
+                paint.setShadowLayer(shadowRadius, shadowOffsetX, shadowOffsetY, shadowColor);
             }
         }
 

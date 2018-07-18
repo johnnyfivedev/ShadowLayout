@@ -26,8 +26,8 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_dx="2dp"
-            app:sl_dy="2dp"
+            app:sl_shadowOffsetX="2dp"
+            app:sl_shadowOffsetY="2dp"
             app:sl_shadowColor="@color/transparent_black">
 
             <Button
@@ -48,8 +48,8 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_dx="4dp"
-            app:sl_dy="4dp"
+            app:sl_shadowOffsetX="4dp"
+            app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_black">
 
             <Button
@@ -63,8 +63,8 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_dx="4dp"
-            app:sl_dy="4dp"
+            app:sl_shadowOffsetX="4dp"
+            app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_black"
             app:sl_shadowRadius="10dp">
 
@@ -99,8 +99,8 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_dx="2dp"
-            app:sl_dy="2dp"
+            app:sl_shadowOffsetX="2dp"
+            app:sl_shadowOffsetY="2dp"
             app:sl_shadowColor="@color/transparent_green">
 
             <Button
@@ -121,8 +121,8 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_dx="4dp"
-            app:sl_dy="4dp"
+            app:sl_shadowOffsetX="4dp"
+            app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_green">
 
             <Button
@@ -136,8 +136,8 @@
         <com.johnnyfivedev.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:sl_dx="4dp"
-            app:sl_dy="4dp"
+            app:sl_shadowOffsetX="4dp"
+            app:sl_shadowOffsetY="4dp"
             app:sl_shadowColor="@color/transparent_green"
             app:sl_shadowRadius="10dp">
 
