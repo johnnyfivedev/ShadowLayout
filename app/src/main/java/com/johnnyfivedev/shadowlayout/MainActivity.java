@@ -37,23 +37,15 @@ public class MainActivity extends AppCompatActivity {
             shadowLayout.setElevationEnabled(true);
         }*/
 
-        //shadowLayout.setShadowRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 20, getResources().getDisplayMetrics()));
-
-        //shadowLayout.setShadowRadiusResource(R.dimen.shadow_radius_big);
-        shadowLayout.setShadowOffsetYDp(-10);
-        shadowLayout.setShadowOffsetXDp(-10);
-        //shadowLayout.setShadowRadiusDp(3);
+        ResizeAnimation resizeAnimation = new ResizeAnimation(button, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300, getResources().getDisplayMetrics()));
+        resizeAnimation.setDuration(500);
+        button.startAnimation(resizeAnimation);
     };
 
     private View.OnLongClickListener buttonLongClickListener = v -> {
        /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             shadowLayout.setElevationEnabled(false);
         }*/
-        //shadowLayout.setShadowRadiusDp(3);
-
-        shadowLayout.setShadowOffsetYDp(0);
-        shadowLayout.setShadowOffsetXDp(0);
-        //shadowLayout.setShadowRadiusDp(2);
 
         return true;
     };

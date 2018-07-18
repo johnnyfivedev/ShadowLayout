@@ -27,12 +27,12 @@ Plan:
 //* Rename cornerRadius to shadowCornerRadius
 
 
+/* Test button with shadow with transition animation and resize animation
 
 
 * Create default shadow which equals view color + alpha (pick default alpha by eye)
     - add minimum possible alpha?
 
-* Test button with shadow with transition animation and resize animation
 
 
 
