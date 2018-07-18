@@ -357,22 +357,26 @@ public class ShadowLayout extends FrameLayout {
     }
 
     private void setBackgroundCompat(int w, int h) {
-        Bitmap bitmap = createShadowBitmap(w, h, cornerRadius, shadowRadius, shadowOffsetX, shadowOffsetY, shadowColor, Color.TRANSPARENT);
+        Bitmap bitmap = createShadowBitmap(w, h);
         setBackground(new BitmapDrawable(getResources(), bitmap));
     }
 
     private Bitmap createShadowBitmap(int shadowWidth,
-                                      int shadowHeight,
-                                      float cornerRadius,
-                                      float shadowRadius,
-                                      float shadowOffsetX,
-                                      float shadowOffsetY,
-                                      int shadowColor,
-                                      int fillColor) {
+                                      int shadowHeight) {
         // Be careful with Bitmap.Config enum. It might mess with a shadow color
         Bitmap bitmap = Bitmap.createBitmap(shadowWidth, shadowHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
 
+        canvas.drawRoundRect(
+                createRectF(shadowWidth, shadowHeight),
+                cornerRadius,
+                cornerRadius,
+                createPaint());
+
+        return bitmap;
+    }
+
+    private RectF createRectF(int shadowWidth, int shadowHeight) {
         RectF rectF = new RectF(
                 shadowRadius,
                 shadowRadius,
@@ -394,11 +398,14 @@ public class ShadowLayout extends FrameLayout {
             rectF.left += Math.abs(shadowOffsetX);
             rectF.right -= Math.abs(shadowOffsetX);
         }
+        return rectF;
+    }
 
+    private Paint createPaint() {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         //paint.setDither(true);
-        paint.setColor(fillColor);
+        paint.setColor(Color.TRANSPARENT);
         paint.setStyle(Paint.Style.FILL);
 
         if (!isInEditMode()) {
@@ -408,10 +415,7 @@ public class ShadowLayout extends FrameLayout {
                 paint.setShadowLayer(shadowRadius, shadowOffsetX, shadowOffsetY, shadowColor);
             }
         }
-
-        canvas.drawRoundRect(rectF, cornerRadius, cornerRadius, paint);
-
-        return bitmap;
+        return paint;
     }
 
     private View getChild() {

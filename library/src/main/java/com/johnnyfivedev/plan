@@ -18,6 +18,8 @@ Plan:
 
 //* Rename dx and dy to shadowOffsetX and shadowOffsetY
 
+//* Add updateUI method (invalidate + request layout)
+
 
 * Create default shadow which equals view color + alpha (pick default alpha by eye)
     - add minimum possible alpha?
@@ -27,9 +29,6 @@ Plan:
 * Test button with shadow with transition animation and resize animation
 
 * Add default shadow attrs (and mb default style)
-
-* Add updateUI method (invalidate + request layout)
-
 
 * Rename cornerRadius to shadowCornerRadius
 
