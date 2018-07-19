@@ -270,7 +270,7 @@ public class ShadowLayout extends FrameLayout {
 
     //endregion
 
-    //region ===================== Callbacks ======================
+    //region ===================== Lifecycle ======================
 
     @Override
     protected void onFinishInflate() {
@@ -300,6 +300,8 @@ public class ShadowLayout extends FrameLayout {
         super.onDraw(canvas);
     }
 
+    //endregion
+
     @Override
     protected int getSuggestedMinimumWidth() {
         return 0;
@@ -310,7 +312,6 @@ public class ShadowLayout extends FrameLayout {
         return 0;
     }
 
-    //endregion
 
     //region ===================== Internal ======================
 
