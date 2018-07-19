@@ -1,5 +1,5 @@
 # ShadowLayout
-Layout for creating shadows around views in Android. Works from API 16 (Jelly Bean)
+Layout for creating shadows around views in Android starting with API 16 (Jelly Bean)
 
 ### Integration
 1. Add the JitPack repository to your root build.gradle file:
