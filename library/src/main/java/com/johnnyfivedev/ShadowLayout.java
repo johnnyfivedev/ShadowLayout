@@ -196,6 +196,12 @@ public class ShadowLayout extends FrameLayout {
 
     //region ===================== Shadow color ======================
 
+    /**
+     * Sets a shadow color.
+     * Color should always have an alpha channel, otherwise shadow will be transparent
+     *
+     * @param shadowColor - a color value in the form 0xAARRGGBB.
+     */
     public void setShadowColor(@ColorInt int shadowColor) {
         this.shadowColor = shadowColor;
         redrawUI();
@@ -204,6 +210,8 @@ public class ShadowLayout extends FrameLayout {
     /**
      * Sets a shadow color.
      * Color should always have an alpha channel, otherwise shadow will be transparent
+     *
+     * @param shadowColorId - a color resource id
      */
     public void setShadowColorRes(@ColorRes int shadowColorId) {
         this.shadowColor = ContextCompat.getColor(context, shadowColorId);
