@@ -196,6 +196,12 @@ public class ShadowLayout extends FrameLayout {
 
     //region ===================== Shadow color ======================
 
+    /**
+     * Sets a shadow color.
+     * Color should always have an alpha channel, otherwise shadow will be transparent
+     *
+     * @param shadowColor - a color value in the form 0xAARRGGBB.
+     */
     public void setShadowColor(@ColorInt int shadowColor) {
         this.shadowColor = shadowColor;
         redrawUI();
@@ -204,6 +210,8 @@ public class ShadowLayout extends FrameLayout {
     /**
      * Sets a shadow color.
      * Color should always have an alpha channel, otherwise shadow will be transparent
+     *
+     * @param shadowColorId - a color resource id
      */
     public void setShadowColorRes(@ColorRes int shadowColorId) {
         this.shadowColor = ContextCompat.getColor(context, shadowColorId);
@@ -262,7 +270,7 @@ public class ShadowLayout extends FrameLayout {
 
     //endregion
 
-    //region ===================== Callbacks ======================
+    //region ===================== Lifecycle ======================
 
     @Override
     protected void onFinishInflate() {
@@ -292,6 +300,8 @@ public class ShadowLayout extends FrameLayout {
         super.onDraw(canvas);
     }
 
+    //endregion
+
     @Override
     protected int getSuggestedMinimumWidth() {
         return 0;
@@ -302,7 +312,6 @@ public class ShadowLayout extends FrameLayout {
         return 0;
     }
 
-    //endregion
 
     //region ===================== Internal ======================
 
